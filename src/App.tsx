@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from '../src/components/Navbar';
+import Dashboard from '../src/components/Dashboard';
+import Requests from '../src/components/Requests';
+import Feedbacks from '../src/components/Feedbacks';
+import Reports from '../src/components/Reports';
+import Patients from '../src/components/Patients';
+import Settings from '../src/components/Settings';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/requests" element={<Requests />} />
+        <Route path="/feedbacks" element={<Feedbacks />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/patients" element={<Patients />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
